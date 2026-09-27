@@ -1,0 +1,27 @@
+version: "3.9"
+
+# Phase 1 only needs Postgres running locally. The frontend (vite) and
+# backend (uvicorn) are run directly on the host during development — see
+# the root README — so hot reload stays fast and no extra containers are
+# needed on an 8GB laptop.
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: devpilot-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: devpilot
+      POSTGRES_PASSWORD: devpilot
+      POSTGRES_DB: devpilot
+    ports:
+      - "5432:5432"
+    volumes:
+      - devpilot_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U devpilot -d devpilot"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  devpilot_pgdata:
