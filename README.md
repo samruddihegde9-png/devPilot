@@ -1,10 +1,9 @@
 ## Screenshots
 
-### Homepage
-![DevPilot Homepage](screenshots/homepage.png)
+![Backend](backend.png)
 
-### Workspace
-![DevPilot Workspace](screenshots/workspace.png)
+![Frontend](frontend.png)
 
-### Repository Intelligence
-![Repository Intelligence](screenshots/repo-intelligence.png)
+![PJM](pjm.png)
+
+![PJS](pjs.png)
